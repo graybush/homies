@@ -1,8 +1,5 @@
 # .bashrc
 
-# vi movement in the shell
-set -o vi
-
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -28,3 +25,31 @@ if [ -d ~/.bashrc.d ]; then
 fi
 
 unset rc
+
+# vi movement in the shell
+set -o vi
+shopt -s histappend
+HISTCONTROL=ignoredup
+PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
+
+if [ "$PS1" ]; then
+   PS1="[\u@\h:\l \W]\\$ "
+fi
+
+if [ -f /run/.containerenv ]; then
+   ## Distrobox Aliases
+   alias locate=plocate
+   alias grep='grep --color=auto'
+   alias l.='ls -d .* --color=auto'
+   alias ll='ls -l --color=auto'
+   alias ls='ls --color=auto'
+   eval "$(starship init bash)";
+else
+   ## Host Aliases
+   alias fs="flatpak search --columns=description,application,version";
+   mesa=`flatpak info org.freedesktop.Platform.GL.default//22.08 | awk -F': ' '/Version/ {print $2}' | uniq`
+   echo mesa: $mesa
+fi
+
+kernel=`uname -r`
+echo kernel: $kernel
