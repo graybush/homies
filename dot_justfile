@@ -1,0 +1,7 @@
+default:
+  @just --list
+
+boxkit:
+  distrobox stop boxkit --yes
+  distrobox rm --force boxkit
+  distrobox create --image ghcr.io/graybush/boxkit --name boxkit --pull
