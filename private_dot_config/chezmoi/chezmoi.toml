@@ -1,0 +1,6 @@
+pager = "less -R"
+[edit]
+  command = "vim"
+[git]
+  autoCommit = true
+  autoPush = true
