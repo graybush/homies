@@ -51,5 +51,7 @@ else
    echo mesa: $mesa
 fi
 
+alias duall="echo 'du -sch .[!.]* * | sort -h'; du -sch .[!.]* * | sort -h"
+
 kernel=`uname -r`
 echo kernel: $kernel
