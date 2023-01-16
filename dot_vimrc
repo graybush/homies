@@ -37,6 +37,9 @@ set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 
+" run chezmoi apply after dotfile save
+autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
+
 " flagging unnecessary whitepace
 au BufRead,BufNewFile * match BadWhitespace /\s\+$/
 
