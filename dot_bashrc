@@ -26,7 +26,7 @@ fi
 
 unset rc
 
-# vi movement in the shell
+# vi movement in bash shell
 set -o vi
 shopt -s histappend
 HISTCONTROL=ignoredup
@@ -52,6 +52,7 @@ else
 fi
 
 alias duall="echo 'du -sch .[!.]* * | sort -h'; du -sch .[!.]* * | sort -h"
+alias me='ps -fU $(whoami)'
 
 kernel=`uname -r`
 echo kernel: $kernel
